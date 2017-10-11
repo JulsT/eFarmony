@@ -1,5 +1,5 @@
 //Use this file to implement Part One of your project
-/*var animal = {};
+var animal = {};
 animal.username = "John";
 animal["tagline"] = "Wazzzuppp!!";
 
@@ -13,16 +13,12 @@ for (var key in animal){
   }
   count++
 }
-console.log(count);
 //Array
 var noiseArray  = ['first'];
 noiseArray.unshift('zero');
 noiseArray.push('second');
 noiseArray[3] = 'third';
-console.log(noiseArray);
-console.log(noiseArray[noiseArray.length-1]);
 animal.noises = noiseArray;
-console.log(animal);
 //
 var animals  = [];
 animals.push(animal);
@@ -32,7 +28,6 @@ var quackers  = {
   noises: ['quack', 'honk', 'sneeze', 'growl']
 };
 animals.push(quackers);
-console.log(animals);*/
 function AnimalTestUser(username){
   var otherArgs = [];
   if(arguments.length>1){
@@ -55,25 +50,32 @@ function AnimalCreator(username, species, tagline, noises){
   }
 }
 function addFriend (animal, friend) {
-    animal.friends.push(friend);
+    animal.friends.push(friend.username);
 }
 var sheep = AnimalCreator('Cloud', 'sheep', 'You can count on me!', ['baahhh', 'arrgg', 'chewchewchew']);
 var cow = AnimalCreator('Moo', 'cow', 'You can count on me!', ['mooo', 'mooo', 'mooo']);
 var llama = AnimalCreator('Zeny', 'llama', 'You can count on me!', ['piu', 'piu', 'piu']);
 
 addFriend(sheep, cow);
-console.log(sheep);
-// { username: 'Cloud',
-//  species: 'sheep',
-//  tagline: 'You can count on me!',
-//  noises: ['baahhh', 'arrgg', 'chewchewchew'],
-//  friends: [{username: 'Moo', species: 'cow'...}]
-// }
 addFriend(sheep, llama);
-console.log(sheep);
-// { username: 'Cloud',
-//  species: 'sheep',
-//  tagline: 'You can count on me!',
-//  noises: ['baahhh', 'arrgg', 'chewchewchew'],
-//  friends: [{username: 'Moo', species: 'cow'...}, {username: 'Zeny', species: 'llama'...}]
-// }
+addFriend(llama, cow);
+addFriend(cow, llama);
+var myFarm = [sheep, cow, llama];
+function addMatchesArray(farm) {
+    for(var i = 0; i < farm.length; i++){
+        farm[i].matches = [] ;
+    }
+}
+addMatchesArray(myFarm);
+function giveMatches (farm) {
+    for(var i = 0; i < farm.length; i++){
+        farm[i].matches.push(farm[i].friends[0]) ;
+    }
+}
+giveMatches(myFarm);
+console.log(animals);
+//Nesting
+var friends = [];
+for(var i = 0; i<animals.length; i++){
+
+}
